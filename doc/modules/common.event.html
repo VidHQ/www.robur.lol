@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>robur</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Functions</h2>
+<ul class="nowrap">
+    <li><a href="#debug">debug (eid, detailed)</a></li>
+    <li><a href="#createEvent">createEvent (name)</a></li>
+    <li><a href="#deleteEvent">deleteEvent (name)</a></li>
+    <li><a href="#isEvent">isEvent (name)</a></li>
+    <li><a href="#_G.register">_G.register (eids, callback)</a></li>
+    <li><a href="#_G.unregister">_G.unregister (callback)</a></li>
+    <li><a href="#_G.debugEvent">_G.debugEvent (eid)</a></li>
+    <li><a href="#_G.fire">_G.fire (eid, emsg, values, noerror)</a></li>
+    <li><a href="#_G.getCurrentMillis">_G.getCurrentMillis ()</a></li>
+    <li><a href="#delay">delay (milliseconds, callback, ...)</a></li>
+    <li><a href="#timer">timer (milliseconds, callback, ...)</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/common.asmcall.html">common.asmcall</a></li>
+  <li><strong>common.event</strong></li>
+  <li><a href="../modules/common.cave.html">common.cave</a></li>
+  <li><a href="../modules/common.log.html">common.log</a></li>
+  <li><a href="../modules/common.utils.html">common.utils</a></li>
+  <li><a href="../modules/common.userinput.html">common.userinput</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>common.event</code></h1>
+<p>This module offers the common event.</p>
+<p>
+
+
+<p>This deals with the asynchronous operation of your code and fires your code on certain callback conditions, known as EVENT's. Remember to add the module identifier "event" before all calls to a module: <code>fooBar()</code> becomes <code>event.fooBar()</code></p>
+
+<h3>External Docs</h3>
+<p>- Lua 5.1 doc: <a href="http://www.lua.org/manual/5.1/">http://www.lua.org/manual/5.1/</a></p>
+
+<h3>Notes</h3>
+<p>- The API is event driven, i.e. each lua call is based on a specific event
+- The global variable 'EVENT' always carries the current event that caused the execution of your code
+<br>It is a table containing 'EVENT.eid', 'EVENT.emsg' and additional data that varies depending on the event
+- To register an event, use the global function <code>register(eid, callback)</code>
+- To unregister an event, use the global function 'unregister(callback)'
+- To debug an EVENT (i.e. to see what data it provides) you can use: <code>debugEventEvent(&quot;EVENT_ID&quot;)</code>
+- You can specify your own events by using the function: 'event.createEvent("YOUR<em>EVENT</em>NAME")`.
+- All predefined &lt;EVENT_IDs&gt; are located in the module "event". e.g. 'event.CONSOLE
+- To delay the execution of your code look at the <code>delay(millis, callback)</code> function</p>
+
+<h3>Examples</h3>
+
+<pre>
+<span class="comment">-- this registers a print of the CONSOLE event
+</span>register(event.CONSOLE, <span class="keyword">function</span>(e) print_r(e) <span class="keyword">end</span>)
+<span class="comment">-- or
+</span>register(<span class="string">"CONSOLE"</span>, <span class="keyword">function</span>(e) print_r(e) <span class="keyword">end</span>)
+
+<span class="comment">-- this delays (postpones) the execution of the print
+</span>delay(<span class="number">1000</span>, <span class="keyword">function</span>() <span class="global">print</span>(<span class="string">"hello world 1000ms delayed"</span>) <span class="keyword">end</span>)
+
+<span class="comment">-- this creates your own event:
+</span>createEvent(<span class="string">"YOUR_EVENT"</span>)
+
+<span class="comment">-- this fires your own event with some data attached
+</span>fire(<span class="string">"YOUR_EVENT"</span>, <span class="string">"some arbitray text"</span>, {foo = <span class="string">"bar"</span>})
+</pre>
+
+</p>
+
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "debug"></a>
+    <strong>debug (eid, detailed)</strong>
+    </dt>
+    <dd>
+    show information about events and their handlers ("listeners").
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">event.<span class="global">debug</span>() <span class="comment">-- short information about all listeners
+</span>event.<span class="global">debug</span>(<span class="string">"USERINPUT"</span>) <span class="comment">-- short information about listeners of specific event
+</span>event.<span class="global">debug</span>(<span class="keyword">nil</span>, <span class="keyword">true</span>) <span class="comment">-- detailed information about all listeners</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "createEvent"></a>
+    <strong>createEvent (name)</strong>
+    </dt>
+    <dd>
+    creates and returns a new software-event ID (eid).
+ We use this to prevent ID clobbering when everybody
+ is defining their own events.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">createEvent(<span class="string">"PWNAGE"</span>)
+register(event.PWNAGE, <span class="keyword">function</span>(e) <span class="comment">--[[ ... ]]</span><span class="comment">-- end)</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "deleteEvent"></a>
+    <strong>deleteEvent (name)</strong>
+    </dt>
+    <dd>
+    removes a software-event ID (eid).
+ This can be used to avoid leaks
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.event.html#createEvent">createEvent</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">deleteEvent(<span class="string">"PWNAGE"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "isEvent"></a>
+    <strong>isEvent (name)</strong>
+    </dt>
+    <dd>
+    checks wether a given event name exists and can be used.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.event.html#createEvent">createEvent</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">isEvent(<span class="string">"PWNAGE"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_G.register"></a>
+    <strong>_G.register (eids, callback)</strong>
+    </dt>
+    <dd>
+    registers an event callback function.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">register({event.USERINPUT}, <span class="keyword">function</span>(e) <span class="global">print</span>(<span class="string">"key: "</span>..e.keycode) <span class="keyword">end</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_G.unregister"></a>
+    <strong>_G.unregister (callback)</strong>
+    </dt>
+    <dd>
+    unregisters a previously registered event callback function.
+ also removes multiple occurences on any EVENT.eid values.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.debugEvent"></a>
+    <strong>_G.debugEvent (eid)</strong>
+    </dt>
+    <dd>
+    debugs a specific event ID.  (prints the event)
+ Note: debugEvent() won't output anything while robur is paused.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">debugEvent(<span class="string">"ONTICK"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_G.fire"></a>
+    <strong>_G.fire (eid, emsg, values, noerror)</strong>
+    </dt>
+    <dd>
+    fires an event.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">fire(<span class="number">100</span>, <span class="string">"test event"</span>, {foo = <span class="string">"bar"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_G.getCurrentMillis"></a>
+    <strong>_G.getCurrentMillis ()</strong>
+    </dt>
+    <dd>
+    Returns the number of milliseconds elapsed so far (since robur startup).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "delay"></a>
+    <strong>delay (milliseconds, callback, ...)</strong>
+    </dt>
+    <dd>
+    delays the execution of a function using the <code>event.ONTICK</code> timer
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">delay(<span class="number">1000</span>, <span class="keyword">function</span>() <span class="global">print</span>(<span class="string">"hello delayed"</span>) <span class="keyword">end</span>)
+<span class="comment">-- or (preferably)
+</span>delay(<span class="number">1000</span>, <span class="global">print</span>, <span class="string">"hello delayed"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "timer"></a>
+    <strong>timer (milliseconds, callback, ...)</strong>
+    </dt>
+    <dd>
+    registers a timed callback that is executed periodically.
+ Maximum execution frequency is defined by the <code>ONTICK</code> event.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">timer(<span class="number">1000</span>, <span class="keyword">function</span>() <span class="global">print</span>(<span class="string">"hello each second..."</span>) <span class="keyword">end</span>)
+<span class="comment">-- or (preferably)
+</span>timer(<span class="number">1000</span>, <span class="global">print</span>, <span class="string">"hello each second..."</span>)</pre>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-06-11 23:24:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

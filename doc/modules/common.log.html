@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>robur</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Functions</h2>
+<ul class="nowrap">
+    <li><a href="#setup">setup (module)</a></li>
+    <li><a href="#LOG">LOG (level, mod, fmt, ...)</a></li>
+    <li><a href="#_G.stacktrace">_G.stacktrace ()</a></li>
+    <li><a href="#DEBUG">DEBUG (module, fmt, ...)</a></li>
+    <li><a href="#INFO">INFO (module, fmt, ...)</a></li>
+    <li><a href="#WARN">WARN (module, fmt, ...)</a></li>
+    <li><a href="#ERROR">ERROR (module, fmt, ...)</a></li>
+    <li><a href="#FATAL">FATAL (module, fmt, ...)</a></li>
+    <li><a href="#setLevel">setLevel (level)</a></li>
+    <li><a href="#setDebug">setDebug ()</a></li>
+    <li><a href="#setInfo">setInfo ()</a></li>
+    <li><a href="#setWarn">setWarn ()</a></li>
+    <li><a href="#setError">setError ()</a></li>
+    <li><a href="#setFatal">setFatal ()</a></li>
+</ul>
+<h2>Fields</h2>
+<ul class="nowrap">
+    <li><a href="#LOG_DEBUG">LOG_DEBUG</a></li>
+    <li><a href="#LOG_INFO">LOG_INFO</a></li>
+    <li><a href="#LOG_WARN">LOG_WARN</a></li>
+    <li><a href="#LOG_ERROR">LOG_ERROR</a></li>
+    <li><a href="#LOG_FATAL">LOG_FATAL</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/common.asmcall.html">common.asmcall</a></li>
+  <li><a href="../modules/common.event.html">common.event</a></li>
+  <li><a href="../modules/common.cave.html">common.cave</a></li>
+  <li><strong>common.log</strong></li>
+  <li><a href="../modules/common.utils.html">common.utils</a></li>
+  <li><a href="../modules/common.userinput.html">common.userinput</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>common.log</code></h1>
+<p>common logging module.</p>
+<p>
+
+</p>
+
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "setup"></a>
+    <strong>setup (module)</strong>
+    </dt>
+    <dd>
+    helper function to create local logging shortcuts (DEBUG, INFO, ...) for a Lua module.
+ It is intended to be called as a 'decorator' function (parameter to <a href="https://www.lua.org/manual/5.3/manual.html#pdf-module">module</a>).
+ The resulting proxy functions will nicely forward your messages to the log system,
+ with the module's <code>_NAME</code> field indicating their origin.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">require</span>(<span class="string">"common.log"</span>)
+<span class="global">module</span>(<span class="string">"modname"</span>, <span class="global">package</span>.seeall, log.setup, ...)
+clean.<span class="global">module</span>(<span class="string">"modname"</span>, clean.seeall, log.setup, ...)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "LOG"></a>
+    <strong>LOG (level, mod, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger main function. </p>
+
+<p> Any log message has to pass through this function. Message output will be
+ suppressed if <code>level</code> is <em>below</em> the current log level! (E.g. for normal
+ operation, you won't get any <a href="../modules/common.log.html#LOG_DEBUG">LOG_DEBUG</a> messages.) Error logging also
+ automatically causes a <a href="../modules/common.log.html#_G.stacktrace">stacktrace</a>.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "_G.stacktrace"></a>
+    <strong>_G.stacktrace ()</strong>
+    </dt>
+    <dd>
+    prints the current lua stack trace.
+ can be used for debugging.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">global <span class="keyword">function</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "DEBUG"></a>
+    <strong>DEBUG (module, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger DEBUG shorthandle function.
+ emits a message with <a href="../modules/common.log.html#LOG_DEBUG">LOG_DEBUG</a> level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#LOG">log.LOG</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "INFO"></a>
+    <strong>INFO (module, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger INFO shorthandle function.
+ emits a message with <a href="../modules/common.log.html#LOG_INFO">LOG_INFO</a> level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#LOG">log.LOG</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "WARN"></a>
+    <strong>WARN (module, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger WARN shorthandle function.
+ emits a message with <a href="../modules/common.log.html#LOG_WARN">LOG_WARN</a> level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#LOG">log.LOG</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "ERROR"></a>
+    <strong>ERROR (module, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger ERROR shorthandle function.
+ emits a message with <a href="../modules/common.log.html#LOG_ERROR">LOG_ERROR</a> level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#LOG">log.LOG</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "FATAL"></a>
+    <strong>FATAL (module, fmt, ...)</strong>
+    </dt>
+    <dd>
+    Logger FATAL shorthandle function.
+ emits a message with <a href="../modules/common.log.html#LOG_FATAL">LOG_FATAL</a> level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#LOG">log.LOG</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "setLevel"></a>
+    <strong>setLevel (level)</strong>
+    </dt>
+    <dd>
+    Sets the log level.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <li><a href="../modules/common.log.html#LOG_DEBUG">LOG_DEBUG</a></li>
+         <li><a href="../modules/common.log.html#LOG_INFO">LOG_INFO</a></li>
+         <li><a href="../modules/common.log.html#LOG_WARN">LOG_WARN</a></li>
+         <li><a href="../modules/common.log.html#LOG_ERROR">LOG_ERROR</a></li>
+         <li><a href="../modules/common.log.html#LOG_FATAL">LOG_FATAL</a></li>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "setDebug"></a>
+    <strong>setDebug ()</strong>
+    </dt>
+    <dd>
+    Sets DEBUG log level
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setInfo"></a>
+    <strong>setInfo ()</strong>
+    </dt>
+    <dd>
+    Sets INFO log level
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setWarn"></a>
+    <strong>setWarn ()</strong>
+    </dt>
+    <dd>
+    Sets WARN log level
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setError"></a>
+    <strong>setError ()</strong>
+    </dt>
+    <dd>
+    Sets ERROR log level
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setFatal"></a>
+    <strong>setFatal ()</strong>
+    </dt>
+    <dd>
+    Sets FATAL log level
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "LOG_DEBUG"></a>
+    <strong>LOG_DEBUG</strong>
+    </dt>
+    <dd>
+    DEBUG log level
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "LOG_INFO"></a>
+    <strong>LOG_INFO</strong>
+    </dt>
+    <dd>
+    INFO log level - this is the <strong>default value</strong>
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "LOG_WARN"></a>
+    <strong>LOG_WARN</strong>
+    </dt>
+    <dd>
+    WARN log level
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "LOG_ERROR"></a>
+    <strong>LOG_ERROR</strong>
+    </dt>
+    <dd>
+    ERROR log level
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "LOG_FATAL"></a>
+    <strong>LOG_FATAL</strong>
+    </dt>
+    <dd>
+    FATAL log level
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.log.html#setLevel">log.setLevel</a>
+    </ul>
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-06-11 23:24:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

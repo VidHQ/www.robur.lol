@@ -1,0 +1,1211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>robur</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Functions</h2>
+<ul class="nowrap">
+    <li><a href="#_G.cfg">_G.cfg (key)</a></li>
+    <li><a href="#io.exists">io.exists (path)</a></li>
+    <li><a href="#io.readFile">io.readFile (filename, mode, absolute)</a></li>
+    <li><a href="#io.writeFile">io.writeFile (filename, content)</a></li>
+    <li><a href="#_G.wchar2char">_G.wchar2char (str)</a></li>
+    <li><a href="#_G.char2wchar">_G.char2wchar (str, codepage)</a></li>
+    <li><a href="#_G.hextotable">_G.hextotable (str, index)</a></li>
+    <li><a href="#_G.hextostring">_G.hextostring (str)</a></li>
+    <li><a href="#bit">bit (p)</a></li>
+    <li><a href="#hasbit">hasbit (x, p)</a></li>
+    <li><a href="#setbit">setbit (x, p)</a></li>
+    <li><a href="#clearbit">clearbit (x, p)</a></li>
+    <li><a href="#checkFileMd5">checkFileMd5 (md5sum, expected)</a></li>
+    <li><a href="#readByte">readByte (ptr, index)</a></li>
+    <li><a href="#writeByte">writeByte (value, ptr, index)</a></li>
+    <li><a href="#readUInt16">readUInt16 (ptr, index)</a></li>
+    <li><a href="#writeUInt16">writeUInt16 (value, ptr, index)</a></li>
+    <li><a href="#readInt16">readInt16 (ptr, index)</a></li>
+    <li><a href="#writeInt16">writeInt16 (value, ptr, index)</a></li>
+    <li><a href="#readUInt32">readUInt32 (ptr, index)</a></li>
+    <li><a href="#writeUInt32">writeUInt32 (value, ptr, index)</a></li>
+    <li><a href="#readInt32">readInt32 (ptr, index)</a></li>
+    <li><a href="#writeInt32">writeInt32 (value, ptr, index)</a></li>
+    <li><a href="#readFloat32">readFloat32 (ptr, index)</a></li>
+    <li><a href="#writeFloat32">writeFloat32 (value, ptr, index)</a></li>
+    <li><a href="#readDouble">readDouble (ptr, index)</a></li>
+    <li><a href="#writeDouble">writeDouble (value, ptr, index)</a></li>
+    <li><a href="#readPointer">readPointer (ptr, index)</a></li>
+    <li><a href="#writePointer">writePointer (value, ptr, index)</a></li>
+    <li><a href="#readBool">readBool (ptr, index)</a></li>
+    <li><a href="#writeBool">writeBool (value, ptr, index)</a></li>
+    <li><a href="#audible">audible (beeps)</a></li>
+    <li><a href="#beep">beep (type)</a></li>
+</ul>
+<h2>Global helper functions </h2>
+<ul class="nowrap">
+    <li><a href="#printf">printf (...)</a></li>
+    <li><a href="#topointer">topointer (arg, offset)</a></li>
+    <li><a href="#isnull">isnull (ptr)</a></li>
+    <li><a href="#iif">iif (expr, param_true, param_false)</a></li>
+    <li><a href="#array_concat">array_concat (...)</a></li>
+    <li><a href="#array_merge">array_merge (...)</a></li>
+    <li><a href="#getCallerName">getCallerName (level)</a></li>
+    <li><a href="#getCallerPos">getCallerPos (level)</a></li>
+    <li><a href="#checkargs">checkargs (...)</a></li>
+    <li><a href="#printModule">printModule (moduleName)</a></li>
+    <li><a href="#getStaticVars">getStaticVars (pattern)</a></li>
+    <li><a href="#getAddress">getAddress (addr_or_label)</a></li>
+    <li><a href="#getProcAddress">getProcAddress (modulename, functionname, noerror)</a></li>
+    <li><a href="#hexdump">hexdump (buf, len)</a></li>
+    <li><a href="#messageBox">messageBox (title, fmt, ...)</a></li>
+    <li><a href="#messageBoxError">messageBoxError (title, fmt, ...)</a></li>
+    <li><a href="#enumHelper">enumHelper (tbl, mod)</a></li>
+    <li><a href="#addMetaIndex">addMetaIndex (tbl, fcnt_t_x)</a></li>
+    <li><a href="#addMetaMember">addMetaMember (tbl, key, fcnt_t)</a></li>
+</ul>
+<h2>Global low-level functions </h2>
+<ul class="nowrap">
+    <li><a href="#identity">identity (...)</a></li>
+    <li><a href="#nop">nop (...)</a></li>
+    <li><a href="#empty">empty (...)</a></li>
+    <li><a href="#touserdata">touserdata (addr)</a></li>
+    <li><a href="#ptrtonumber">ptrtonumber (ptr, offset)</a></li>
+    <li><a href="#ptrtostring">ptrtostring (ptr)</a></li>
+    <li><a href="#win_wide_to_str_C">win_wide_to_str_C (codepage, str, len)</a></li>
+    <li><a href="#win_str_to_wide_C">win_str_to_wide_C (codepage, str, len)</a></li>
+    <li><a href="#win_str_to_str_C">win_str_to_str_C (codepage_from, codepage_to, str, len)</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/common.asmcall.html">common.asmcall</a></li>
+  <li><a href="../modules/common.event.html">common.event</a></li>
+  <li><a href="../modules/common.cave.html">common.cave</a></li>
+  <li><a href="../modules/common.log.html">common.log</a></li>
+  <li><strong>common.utils</strong></li>
+  <li><a href="../modules/common.userinput.html">common.userinput</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>common.utils</code></h1>
+<p>common utilities module.</p>
+<p>keep in mind to add module identifier <code>utils.</code> in front of all calls to this module.
+i.e. <code>fooBar()</code> becomes <code>utils.fooBar()</code>.</p>
+
+<p>see also: <a href="#Global_helper_functions">Global helper functions</a>, <a href="#Global_low_level_functions">Global low-level functions</a> in this module</p>
+
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "_G.cfg"></a>
+    <strong>_G.cfg (key)</strong>
+    </dt>
+    <dd>
+    returns a config value.
+ without raising strict errors on non-defined variables
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "io.exists"></a>
+    <strong>io.exists (path)</strong>
+    </dt>
+    <dd>
+    tests if a file exists
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">global <span class="keyword">function</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "io.readFile"></a>
+    <strong>io.readFile (filename, mode, absolute)</strong>
+    </dt>
+    <dd>
+    reads a whole file and returns the contents as a big string
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "io.writeFile"></a>
+    <strong>io.writeFile (filename, content)</strong>
+    </dt>
+    <dd>
+    writes a file.  Warning: overwrites existing content
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.wchar2char"></a>
+    <strong>_G.wchar2char (str)</strong>
+    </dt>
+    <dd>
+    returns a 16Bit wchar buffer to a 8Bit string by just dropping each second byte.
+ TODO: improve string operation performance. add true UTF16 support
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.char2wchar"></a>
+    <strong>_G.char2wchar (str, codepage)</strong>
+    </dt>
+    <dd>
+    converts a character string to a wide character string by adding each second byte string.char(0).
+ TODO: improve string operation performance. add true UTF16 support
+ local CHAR<em>PTR = ffi.typeof("uint8</em>t*") -- ffi.BYTE_PTR
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.hextotable"></a>
+    <strong>_G.hextotable (str, index)</strong>
+    </dt>
+    <dd>
+    converts hexadecimal chars to a table
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.hextostring"></a>
+    <strong>_G.hextostring (str)</strong>
+    </dt>
+    <dd>
+    converts hexadecimal chars to a string
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bit"></a>
+    <strong>bit (p)</strong>
+    </dt>
+    <dd>
+    returns the 2^(p-1) value for a bit index.
+ <span style="color:firebrick">DEPRECATED</span> - You are strongly encouraged to use
+ the builtin <a href="http://bitop.luajit.org/">BitOp</a> library instead - see <code>bit.lshift</code>.
+ <strong>Caution</strong>: The 1-based indexing of bits doesn't conform to usual conventions.
+ <code>utils.bit(3) == 4</code> would normally be associated with the bitmask for "bit 2".
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hasbit"></a>
+    <strong>hasbit (x, p)</strong>
+    </dt>
+    <dd>
+    checks whether a UInt32 value has a bit or not.
+ <span style="color:firebrick">DEPRECATED</span>
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">if</span> hasbit(x, bit(<span class="number">3</span>)) <span class="keyword">then</span> ...</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setbit"></a>
+    <strong>setbit (x, p)</strong>
+    </dt>
+    <dd>
+    sets a bit on a UInt32 value.
+ <span style="color:firebrick">DEPRECATED</span>
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">setbit(x, bit(<span class="number">3</span>))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "clearbit"></a>
+    <strong>clearbit (x, p)</strong>
+    </dt>
+    <dd>
+    clears a bit on a UInt32 value.
+ <span style="color:firebrick">DEPRECATED</span>
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">clearbit(x, bit(<span class="number">3</span>))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "checkFileMd5"></a>
+    <strong>checkFileMd5 (md5sum, expected)</strong>
+    </dt>
+    <dd>
+    checks the message digest of a file, and displays error prompt on mismatch
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "readByte"></a>
+    <strong>readByte (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a byte (8 bit unsigned integer) from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeByte"></a>
+    <strong>writeByte (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes a byte (8 bit unsigned integer) to a given address
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">writeByte(<span class="number">0xAB</span>, <span class="number">0x12345678</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "readUInt16"></a>
+    <strong>readUInt16 (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 16 bit unsigned integer from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeUInt16"></a>
+    <strong>writeUInt16 (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes an uint16_t integer to a given address
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "readInt16"></a>
+    <strong>readInt16 (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 16 bit integer from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeInt16"></a>
+    <strong>writeInt16 (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes an int16_t integer to a given address
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "readUInt32"></a>
+    <strong>readUInt32 (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 32 bit unsigned integer from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeUInt32"></a>
+    <strong>writeUInt32 (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes an uint32_t integer to a given address
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">writeUInt32(<span class="number">0xc001d00d</span>, <span class="number">0x12345678</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "readInt32"></a>
+    <strong>readInt32 (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 32 bit integer from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeInt32"></a>
+    <strong>writeInt32 (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes an int32_t integer to a given address
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "readFloat32"></a>
+    <strong>readFloat32 (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 32 bit (single precision) float from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeFloat32"></a>
+    <strong>writeFloat32 (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes a 32bit (single precision) float to a given address
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">writeFloat32(<span class="global">math</span>.pi, <span class="number">0x12345678</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "readDouble"></a>
+    <strong>readDouble (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a 64bit (double precision) float from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeDouble"></a>
+    <strong>writeDouble (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes a 64bit (double precision) float to a given address
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">writeDouble(<span class="global">math</span>.pi, <span class="number">0x12345678</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "readPointer"></a>
+    <strong>readPointer (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a pointer from memory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writePointer"></a>
+    <strong>writePointer (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes a pointer to a given address
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "readBool"></a>
+    <strong>readBool (ptr, index)</strong>
+    </dt>
+    <dd>
+    reads a boolean from memory.  converts <code>int</code> (32bit) value at ptr: 0 = <code>false</code>, anything else = <code>true</code>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "writeBool"></a>
+    <strong>writeBool (value, ptr, index)</strong>
+    </dt>
+    <dd>
+    writes a boolean value to a given address.  this stores an <code>int</code> (32bit) value: 0 for <code>false</code>, 1 for <code>true</code>
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">writeBool(<span class="keyword">true</span>, <span class="number">0x12345678</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "audible"></a>
+    <strong>audible (beeps)</strong>
+    </dt>
+    <dd>
+    a 'universal' audio signal by emitting "audible" char (BEL)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "beep"></a>
+    <strong>beep (type)</strong>
+    </dt>
+    <dd>
+    Windows <code>MessageBeep</code> function.
+ see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms680356(v=vs.85).aspx">
+ http://msdn.microsoft.com/en-us/library/windows/desktop/ms680356(v=vs.85).aspx</a>
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Global_helper_functions"></a>Global helper functions </h2>
+
+          <div class="section-description">
+
+
+
+<h3>Global C-Type helpers / forwards for ffi functions:</h3>
+
+<ul>
+    <li><code>str(\&lt;PTR\&gt;)</code> -- reads a string from process memory (num ptr or ctype), like <code>ffi.string</code></li>
+    <li><code>wstr(\&lt;PTR\&gt;)</code> -- reads a wide char string from memory, converted to a Lua string</li>
+    <li><code>cdef(&quot;uint32_t*&quot;)</code> -- declares a ctype, = <code>ffi.cdef(&quot;uint32_t*&quot;)</code></li>
+    <li><code>C.\&lt;TYPENAME\&gt;</code> -- accesses a ctype definition, = <code>ffi.C.\&lt;TYPENAME\&gt;</code></li>
+    <li><code>new()</code>, <code>alloc()</code>, <code>calloc()</code> -- allocate ctype memory, = <code>ffi.new(...)</code></li>
+</ul>
+
+<p><br></p>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "printf"></a>
+    <strong>printf (...)</strong>
+    </dt>
+    <dd>
+    a shortcut to <code>print(string.format(fmt, ...))</code>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "topointer"></a>
+    <strong>topointer (arg, offset)</strong>
+    </dt>
+    <dd>
+    conversion to pointer.  converts arg (with optional offset) to <code>cdata\&lt;void*\&gt;</code>
+ <!-- implemented in ffi_ctypes.lua -->
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.utils.html#ptrtonumber">ptrtonumber</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "isnull"></a>
+    <strong>isnull (ptr)</strong>
+    </dt>
+    <dd>
+    checks whether a pointer is <code>NULL</code>.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "iif"></a>
+    <strong>iif (expr, param_true, param_false)</strong>
+    </dt>
+    <dd>
+    a simple "<a href="http://en.wikipedia.org/wiki/IIf">iif</a>" wrapper. </p>
+
+<p><em>Note:</em> This is mostly for your convenience, or to improve readability of your code.
+The drawback of using a function call is that the arguments will always be evaluated.
+Often you could also use <strong>native Lua expressions</strong> for this, e.g.:</p>
+<pre><code>expr and param_true or param_false
+</code></pre>
+<p>(But beware of a pitfall when *param_true* evaluates to <code>false</code>, where Lua then
+wouldn't use it and pick the "or" expression instead.)
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">x = iif(<span class="number">5</span> &lt; <span class="number">10</span>, <span class="string">"Yes it is"</span>, <span class="string">"No it isn't"</span>); <span class="global">print</span>(x)
+<span class="keyword">return</span> iif(<span class="number">2</span> + <span class="number">2</span> == <span class="number">5</span>, <span class="string">"Correct"</span>, <span class="string">"Wrong"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "array_concat"></a>
+    <strong>array_concat (...)</strong>
+    </dt>
+    <dd>
+    merge arrays (<strong>sequentially</strong> indexed tables, <em>won't</em> work for associative tables).
+see: <a href="http://stackoverflow.com/questions/1410862/concatenation-of-tables-in-lua">Concatenation of tables in Lua</a></p>
+
+<p>return a new array containing the concatenation of all of its
+parameters. Scalar parameters are included in place, and array
+parameters have their values shallow-copied to the final array.
+(Note that userdata and function values are treated as scalar.)
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.utils.html#array_merge">array_merge</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">array_concat(<span class="number">1</span>, <span class="number">2</span>, {<span class="string">"red"</span>, {<span class="string">"green"</span>, <span class="string">"blue"</span>}}, <span class="number">3</span>, <span class="keyword">nil</span>, {<span class="number">4</span>, <span class="number">5</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "array_merge"></a>
+    <strong>array_merge (...)</strong>
+    </dt>
+    <dd>
+    another way to merge arrays (this one is intended for <strong>associative</strong> tables). </p>
+
+<p>This function will start with an empty table and then try to combine
+any given parameters (which must be tables or <code>nil</code>), by copying their
+index/value pairs into the result. Depending on the order of tables, existing
+result values will get overwritten in case of duplicate indices - i.e. with
+such key collisions values from 'later' tables would "win" over those of
+'previous' tables.</p>
+
+<p>For this reason, copying sequentially indexed arrays with this function
+doesn't work well - use <a href="../modules/common.utils.html#array_concat">array_concat</a> instead.</p>
+
+<p>Note: Only one level of key/value pairs gets processed. The merge does <strong>not</strong>
+recurse (or 'descend' into) arguments, so e.g. nested (sub)tables will be
+copied "as is".
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/common.utils.html#array_concat">array_concat</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">array_merge(
+	{frog=<span class="string">"slimey"</span>, toad=<span class="string">"warty"</span>},
+	{cat=<span class="string">"furry"</span>, fish=<span class="string">"friendly"</span>},
+	<span class="keyword">nil</span>,
+	{[<span class="string">"tasmanian devil"</span>]=<span class="string">"hungry"</span>}
+)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "getCallerName"></a>
+    <strong>getCallerName (level)</strong>
+    </dt>
+    <dd>
+    return the name of a calling function.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getCallerPos"></a>
+    <strong>getCallerPos (level)</strong>
+    </dt>
+    <dd>
+    return position within caller.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "checkargs"></a>
+    <strong>checkargs (...)</strong>
+    </dt>
+    <dd>
+    use this to quickly check for and <code>error()</code> on wrong or missing arguments for a function call
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">checkargs({foobar, <span class="string">"cdata"</span>, <span class="string">"something went wrong!"</span>})
+<span class="comment">-- you can do multiple checks for arbitrary arguments in any order you like
+</span>checkargs({arg3, <span class="string">"number"</span>}, {arg1, <span class="string">"string,number"</span>, <span class="string">"message"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "printModule"></a>
+    <strong>printModule (moduleName)</strong>
+    </dt>
+    <dd>
+    prints any functions and static vars of a module
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getStaticVars"></a>
+    <strong>getStaticVars (pattern)</strong>
+    </dt>
+    <dd>
+    returns all global variables that match <code>\&lt;PREFIX\&gt;_...</code> naming
+ convention used for target-specific static variables
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getAddress"></a>
+    <strong>getAddress (addr_or_label)</strong>
+    </dt>
+    <dd>
+    return numeric address, adjusted for relative addressing (ASLR) if needed.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getProcAddress"></a>
+    <strong>getProcAddress (modulename, functionname, noerror)</strong>
+    </dt>
+    <dd>
+    This function returns the address of a given function within a module (library).
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">getProcAddress(<span class="string">"user32"</span>, <span class="string">"GetMessageA"</span>)
+getProcAddress(<span class="string">"user32.TranslateMessage"</span>)
+<span class="keyword">local</span> value, err = getProcAddress(<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="keyword">true</span>)
+asmcall.cdecl(getProcAddress(<span class="string">"user32.MessageBoxA"</span>), <span class="number">0</span>, <span class="string">"Hello World!"</span>, <span class="string">"Title"</span>, <span class="number">0</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "hexdump"></a>
+    <strong>hexdump (buf, len)</strong>
+    </dt>
+    <dd>
+    prints a buffer in standard hexdump format to stdout.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "messageBox"></a>
+    <strong>messageBox (title, fmt, ...)</strong>
+    </dt>
+    <dd>
+    shows a modal message box.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "messageBoxError"></a>
+    <strong>messageBoxError (title, fmt, ...)</strong>
+    </dt>
+    <dd>
+    shows a modal message box with an error/stop icon.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "enumHelper"></a>
+    <strong>enumHelper (tbl, mod)</strong>
+    </dt>
+    <dd>
+    enum helper function.
+ A function that converts a table to a two-way mapping of keys and values.
+ This may be useful for string / number pairs often used for "enums",
+ e.g. with low-level API interface declarations (FFI).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "addMetaIndex"></a>
+    <strong>addMetaIndex (tbl, fcnt_t_x)</strong>
+    </dt>
+    <dd>
+    injects a metatable index function to the given table.
+ several indexers can be used for one object, they are handled as a chain.
+ the first one that retrieves a value other than <code>nil</code> serves the request.
+ note: main idx is always <code>rawget(t, x)</code>
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">the indexer <span class="keyword">function</span>'s arguments are: arg1: <span class="global">table</span>, arg2: idx</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "addMetaMember"></a>
+    <strong>addMetaMember (tbl, key, fcnt_t)</strong>
+    </dt>
+    <dd>
+    adds a meta member to an object.
+ this can be very handy on dynamic background objects that
+ need to be fetched any time the object is accessed or iterated.
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">fcnt_t(tbl) will be invoked <span class="keyword">for</span> every tbl[key] request</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Global_low_level_functions"></a>Global low-level functions </h2>
+
+          <div class="section-description">
+           (implemented in C)
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "identity"></a>
+    <strong>identity (...)</strong>
+    </dt>
+    <dd>
+    "identity" function (output = input)
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">if</span> lowercase_flag <span class="keyword">then</span>
+	transform = <span class="global">string</span>.lower
+<span class="keyword">else</span>
+	transform = identity
+endif
+<span class="global">print</span>(transform(<span class="string">"FooBar"</span>))
+
+identity({<span class="string">"whatever"</span>, <span class="string">"you"</span>}, <span class="string">"want"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "nop"></a>
+    <strong>nop (...)</strong>
+    </dt>
+    <dd>
+    nop function ("no operation")
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">assert</span>(nop({<span class="string">"whatever"</span>, <span class="string">"you"</span>}, <span class="string">"want"</span>) == <span class="keyword">nil</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "empty"></a>
+    <strong>empty (...)</strong>
+    </dt>
+    <dd>
+
+<p>test for "empty" values.
+For each argument passed, the function will examine its value:</p>
+
+<ul>
+    <li>If the argument is unassigned (<code>nil</code> value), the function returns <code>true</code>.</li>
+    <li>For strings the function tests if they are zero length (== "").</li>
+    <li>For tables the function will check if they contain at least one element.</li>
+    <li>For pointer types (userdata, light userdata or LuaJIT \<cdata\>) it will
+    return <code>true</code> on <code>NULL</code> values, and <code>false</code> otherwise.</li>
+</ul>
+
+
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">a = {<span class="string">"foo"</span>, <span class="keyword">nil</span>, <span class="string">"bar"</span>}
+empty(a, a[<span class="number">2</span>], a[<span class="number">5</span>]) <span class="comment">-- == false, true, true (no value at index 5)
+</span>
+b = ffi.new(<span class="string">"int[1]"</span>) <span class="comment">-- cdata&lt;int[1]&gt;
+</span>empty(b)	<span class="comment">-- == false (b points to a valid address)
+</span>
+empty({}, <span class="string">"foobar"</span>, <span class="string">""</span>) <span class="comment">-- == true (empty table), false, true
+</span>empty(<span class="keyword">nil</span>)	<span class="comment">-- == true
+</span>empty()		<span class="comment">-- == nil (no arguments!)</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "touserdata"></a>
+    <strong>touserdata (addr)</strong>
+    </dt>
+    <dd>
+    converts address to a userdata pointer.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ptrtonumber"></a>
+    <strong>ptrtonumber (ptr, offset)</strong>
+    </dt>
+    <dd>
+    converts pointer to a plain integer (numeric address).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ptrtostring"></a>
+    <strong>ptrtostring (ptr)</strong>
+    </dt>
+    <dd>
+    converts pointer to a string, representing the address in hexadecimal format.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "win_wide_to_str_C"></a>
+    <strong>win_wide_to_str_C (codepage, str, len)</strong>
+    </dt>
+    <dd>
+    Windows widestring (UTF-16) to string conversion.
+ This function uses
+ <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd374130%28v=vs.85%29.aspx">WideCharToMultiByte</a>.
+ <!-- (implemented in winfuncs.c) -->
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "win_str_to_wide_C"></a>
+    <strong>win_str_to_wide_C (codepage, str, len)</strong>
+    </dt>
+    <dd>
+    Windows string to widestring (UTF-16) conversion.
+ This function uses
+ <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd319072%28v=vs.85%29.aspx">MultiByteToWideChar</a>.
+ <!-- (implemented in winfuncs.c) -->
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "win_str_to_str_C"></a>
+    <strong>win_str_to_str_C (codepage_from, codepage_to, str, len)</strong>
+    </dt>
+    <dd>
+    Windows string to string conversion.
+ This function converts between different codepages (ANSI, OEM, UTF-8, ...).
+ Internally, it works by translating to a "wide" (UTF-16) string first,
+ and then converting that back to the desired representation.
+ <!-- (implemented in winfuncs.c) -->
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-06-11 23:24:12 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
