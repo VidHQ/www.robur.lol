@@ -6,7 +6,7 @@ local Offsets = {}
 
 local modulePtr = ptrtonumber(winapi.getModuleHandle(0))
 
-Offsets.CastSpell = modulePtr + 0x517C00
+Offsets.CastSpell = modulePtr + 0x5177E0
 Offsets.CastSock = modulePtr + 0x1bfb670
 Offsets.GetAttackCastDelay = modulePtr + 0x2b62b0
 Offsets.GetAttackDelay = modulePtr + 0x2b63b0
